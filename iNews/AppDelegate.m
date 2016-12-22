@@ -124,4 +124,12 @@
     }
 }
 
+-(void)removeAllUsers{
+    NSFetchRequest *request = [[NSFetchRequest alloc] initWithEntityName:@"User"];
+    NSBatchDeleteRequest *delete = [[NSBatchDeleteRequest alloc] initWithFetchRequest:request];
+
+    NSError *deleteError = nil;
+    [self.persistentStoreCoordinator executeRequest:delete withContext:self.managedObjectContext error:&deleteError];
+    NSLog(@"remove all");
+}
 @end

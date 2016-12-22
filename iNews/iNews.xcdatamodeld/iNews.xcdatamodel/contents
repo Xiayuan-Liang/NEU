@@ -1,4 +1,25 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<model name="Test1.xcdatamodel" userDefinedModelVersionIdentifier="" type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="1" systemVersion="11A491" minimumToolsVersion="Automatic" macOSVersion="Automatic" iOSVersion="Automatic">
-    <elements/>
+<model userDefinedModelVersionIdentifier="" type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="9525" systemVersion="14F1605" minimumToolsVersion="Automatic">
+    <entity name="NewsItem" representedClassName="NewsItem" syncable="YES">
+        <attribute name="url" optional="YES" attributeType="String" syncable="YES"/>
+        <relationship name="reviews" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Review" inverseName="newsItem" inverseEntity="Review" syncable="YES"/>
+    </entity>
+    <entity name="Review" representedClassName="Review" syncable="YES">
+        <attribute name="date" optional="YES" attributeType="Date" syncable="YES"/>
+        <attribute name="reviewDetail" optional="YES" attributeType="String" syncable="YES"/>
+        <relationship name="newsItem" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="NewsItem" inverseName="reviews" inverseEntity="NewsItem" syncable="YES"/>
+        <relationship name="user" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="User" inverseName="reviews" inverseEntity="User" syncable="YES"/>
+    </entity>
+    <entity name="User" representedClassName="User" syncable="YES">
+        <attribute name="email" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="icon" optional="YES" attributeType="Binary" syncable="YES"/>
+        <attribute name="password" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="username" optional="YES" attributeType="String" syncable="YES"/>
+        <relationship name="reviews" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Review" inverseName="user" inverseEntity="Review" syncable="YES"/>
+    </entity>
+    <elements>
+        <element name="NewsItem" positionX="-1550" positionY="-2574" width="128" height="75"/>
+        <element name="Review" positionX="-1764" positionY="-2556" width="128" height="105"/>
+        <element name="User" positionX="-1944" positionY="-2493" width="128" height="120"/>
+    </elements>
 </model>
